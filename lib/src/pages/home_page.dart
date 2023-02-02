@@ -9,7 +9,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Laboratory of Components'),
+        title: Center(child: Text('Laboratory of Components')),
       ),
       body: _getList(),
     );
