@@ -1,3 +1,4 @@
+import 'package:components_lab/src/pages/alert_page.dart';
 import 'package:components_lab/src/providers/menu_provider.dart';
 import 'package:components_lab/src/utils/icon_string_util.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,7 @@ class HomePage extends StatelessWidget {
       initialData: [], //optional field
       builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {
         return ListView(
-          children: _getItemsListMap(snapshot.data),
+          children: _getItemsListMap(snapshot.data, context),
         );
       },
     );
@@ -46,7 +47,7 @@ class HomePage extends StatelessWidget {
     return options;
   }
 
-  List<Widget> _getItemsListMap(List<dynamic>? data) {
+  List<Widget> _getItemsListMap(List<dynamic>? data, BuildContext context) {
     if (data != null) {
       return data.map((element) {
         return Column(children: [
@@ -55,7 +56,10 @@ class HomePage extends StatelessWidget {
             subtitle: Text(element['ruta']),
             leading: getIcon(element['icon']),
             trailing: Icon(Icons.keyboard_arrow_right),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => AlertPage()));
+            },
           ),
           Divider()
         ]);

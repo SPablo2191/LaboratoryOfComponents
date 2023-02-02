@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class AlertPage extends StatelessWidget {
   const AlertPage({super.key});
 
@@ -6,6 +7,12 @@ class AlertPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Alert')),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pop(context);
+        },
+        child: Icon(Icons.keyboard_arrow_left),
+      ),
     );
   }
 }
