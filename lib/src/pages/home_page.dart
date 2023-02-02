@@ -57,8 +57,10 @@ class HomePage extends StatelessWidget {
             leading: getIcon(element['icon']),
             trailing: Icon(Icons.keyboard_arrow_right),
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => AlertPage()));
+              Navigator.pushNamed(context, element['ruta']);
+              // no dynamic form
+              // Navigator.push(context,
+              //     MaterialPageRoute(builder: (context) => AlertPage()));
             },
           ),
           Divider()
