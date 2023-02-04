@@ -11,7 +11,13 @@ class CardPage extends StatelessWidget {
       ),
       body: ListView(
         padding: EdgeInsets.all(10.0),
-        children: [_getCard1()],
+        children: [
+          _getCard1(),
+          SizedBox(
+            height: 30.0,
+          ),
+          _getCard2()
+        ],
       ),
     );
   }
@@ -38,6 +44,18 @@ class CardPage extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+
+  _getCard2() {
+    return Card(
+      child: Column(children: [
+        // FadeInImage(),
+        // Image(image: NetworkImage('')),
+        Container(
+            padding: EdgeInsets.all(10),
+            child: Text('Esta es una imagen de prueba'))
+      ]),
     );
   }
 }
