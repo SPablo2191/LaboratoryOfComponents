@@ -16,7 +16,42 @@ class CardPage extends StatelessWidget {
           SizedBox(
             height: 30.0,
           ),
-          _getCard2()
+          _getCard2(),
+          SizedBox(
+            height: 30.0,
+          ),
+          SizedBox(
+            height: 30.0,
+          ),
+          _getCard1(),
+          SizedBox(
+            height: 30.0,
+          ),
+          _getCard2(),
+          SizedBox(
+            height: 30.0,
+          ),
+          _getCard1(),
+          SizedBox(
+            height: 30.0,
+          ),
+          _getCard2(),
+          SizedBox(
+            height: 30.0,
+          ),
+          _getCard1(),
+          SizedBox(
+            height: 30.0,
+          ),
+          _getCard2(),
+          SizedBox(
+            height: 30.0,
+          ),
+          _getCard1(),
+          SizedBox(
+            height: 30.0,
+          ),
+          _getCard2(),
         ],
       ),
     );
@@ -24,6 +59,8 @@ class CardPage extends StatelessWidget {
 
   Widget _getCard1() {
     return Card(
+      elevation: 5.0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       child: Column(
         children: [
           ListTile(
@@ -48,14 +85,35 @@ class CardPage extends StatelessWidget {
   }
 
   _getCard2() {
-    return Card(
+    final card = Container(
+      // clipBehavior: Clip.antiAlias,
       child: Column(children: [
-        // FadeInImage(),
+        FadeInImage(
+          placeholder: AssetImage('assets/jar.gif'),
+          image: NetworkImage(
+              'https://iso.500px.com/wp-content/uploads/2014/07/big-one.jpg'),
+          fadeInDuration: Duration(milliseconds: 200),
+          height: 300,
+          fit: BoxFit.cover,
+        ),
         // Image(image: NetworkImage('')),
         Container(
             padding: EdgeInsets.all(10),
             child: Text('Esta es una imagen de prueba'))
       ]),
+    );
+    return Container(
+      child: ClipRRect(child: card, borderRadius: BorderRadius.circular(30)),
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(30.0),
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+                color: Colors.black26,
+                blurRadius: 10.0,
+                spreadRadius: 2.0,
+                offset: Offset(2.0, 5.0))
+          ]),
     );
   }
 }

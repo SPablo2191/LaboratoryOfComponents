@@ -48,26 +48,25 @@ class HomePage extends StatelessWidget {
   }
 
   List<Widget> _getItemsListMap(List<dynamic>? data, BuildContext context) {
-    if (data != null) {
-      return data.map((element) {
-        return Column(children: [
-          ListTile(
-            title: Text(element['texto']),
-            subtitle: Text(element['ruta']),
-            leading: getIcon(element['icon']),
-            trailing: Icon(Icons.keyboard_arrow_right),
-            onTap: () {
-              Navigator.pushNamed(context, element['ruta']);
-              // no dynamic form
-              // Navigator.push(context,
-              //     MaterialPageRoute(builder: (context) => AlertPage()));
-            },
-          ),
-          Divider()
-        ]);
-      }).toList();
-    } else {
+    if (data == null) {
       return [];
     }
+    return data.map((element) {
+      return Column(children: [
+        ListTile(
+          title: Text(element['texto']),
+          subtitle: Text(element['ruta']),
+          leading: getIcon(element['icon']),
+          trailing: Icon(Icons.keyboard_arrow_right),
+          onTap: () {
+            Navigator.pushNamed(context, element['ruta']);
+            // no dynamic form
+            // Navigator.push(context,
+            //     MaterialPageRoute(builder: (context) => AlertPage()));
+          },
+        ),
+        Divider()
+      ]);
+    }).toList();
   }
 }
