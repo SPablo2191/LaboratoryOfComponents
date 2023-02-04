@@ -20,6 +20,10 @@ class MyApp extends StatelessWidget {
         'alert': (BuildContext context) => AlertPage(),
         'avatar': (BuildContext context) => AvatarPage()
       },
+      onGenerateRoute: (settings) {
+        // se dispara cuando no esta en rutas
+        return MaterialPageRoute(builder: (context) => AlertPage());
+      },
       debugShowCheckedModeBanner: false,
     );
   }
