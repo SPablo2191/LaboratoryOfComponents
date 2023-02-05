@@ -20,6 +20,11 @@
       "ruta": "container",
       "icon": "adb_outlined",
       "texto": "Animated Container"
+    },
+    {
+      "ruta": "inputs",
+      "icon": "input",
+      "texto": "Inputs"
     }
   ]
 }
