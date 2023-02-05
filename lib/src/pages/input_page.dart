@@ -11,6 +11,8 @@ class _InputPageState extends State<InputPage> {
   String _name = '';
   String _email = '';
   String _password = '';
+  String _date = '';
+  TextEditingController _inputDateFieldController = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,6 +28,8 @@ class _InputPageState extends State<InputPage> {
           _getEmail(),
           Divider(),
           _getPassword(),
+          Divider(),
+          _getDate(context),
           Divider(),
           _getPersona()
         ],
@@ -45,7 +49,7 @@ class _InputPageState extends State<InputPage> {
           counter: Text('characters ${_name.length}'),
           hintText: 'e.g example123', //placeholder
           labelText: 'Username',
-          helperText: '8 caracteres minimo',
+          helperText: '8 characters minimum',
           suffixIcon: Icon(Icons.accessibility),
           icon: Icon(Icons.account_circle)),
     );
@@ -86,5 +90,36 @@ class _InputPageState extends State<InputPage> {
           icon: Icon(Icons.password_rounded),
           suffixIcon: Icon(Icons.lock_open)),
     );
+  }
+
+  _getDate(BuildContext context) {
+    return TextField(
+      onTap: () {
+        FocusScope.of(context).requestFocus(new FocusNode());
+        _selectDate(context);
+      },
+      controller: _inputDateFieldController,
+      decoration: InputDecoration(
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(20.0)), //placeholder
+          labelText: 'Date',
+          hintText: 'Birth date',
+          icon: Icon(Icons.date_range_rounded),
+          suffixIcon: Icon(Icons.perm_contact_cal)),
+    );
+  }
+
+  _selectDate(BuildContext context) async {
+    DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: new DateTime.now(),
+        firstDate: new DateTime(2023),
+        lastDate: new DateTime(2025),
+        locale: Locale('es', 'ES'));
+    if (picked != null) {
+      setState(() {
+        _inputDateFieldController.text = picked.toString();
+      });
+    }
   }
 }
