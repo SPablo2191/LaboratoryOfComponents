@@ -15,6 +15,11 @@
       "ruta": "card",
       "icon": "folder_open",
       "texto": "Cards - Tarjetas"
+    },
+    {
+      "ruta": "container",
+      "icon": "adb_outlined",
+      "texto": "Animated Container"
     }
   ]
 }
