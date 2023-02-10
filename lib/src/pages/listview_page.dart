@@ -47,16 +47,19 @@ class _ListViewPageState extends State<ListViewPage> {
   }
 
   _createListView() {
-    return ListView.builder(
-        controller: _scrollController,
-        itemCount: _numbers.length,
-        itemBuilder: (context, index) {
-          final image = _numbers[index];
-          return FadeInImage(
-              placeholder: AssetImage('assets/jar.gif'),
-              image:
-                  NetworkImage('https://picsum.photos/500/300/?image=$image'));
-        }); // como se va a dibujar este componente
+    return RefreshIndicator(
+      onRefresh: (() => getFirstPage()),
+      child: ListView.builder(
+          controller: _scrollController,
+          itemCount: _numbers.length,
+          itemBuilder: (context, index) {
+            final image = _numbers[index];
+            return FadeInImage(
+                placeholder: AssetImage('assets/jar.gif'),
+                image: NetworkImage(
+                    'https://picsum.photos/500/300/?image=$image'));
+          }),
+    ); // como se va a dibujar este componente
   }
 
   _addTenItems() {
@@ -95,5 +98,15 @@ class _ListViewPageState extends State<ListViewPage> {
     } else {
       return Container();
     }
+  }
+
+  Future<void> getFirstPage() async {
+    await Timer(Duration(seconds: 2), _updateList());
+  }
+
+  _updateList() {
+    _numbers.clear();
+    _lastItem++;
+    _addTenItems();
   }
 }
